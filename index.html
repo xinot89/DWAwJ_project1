@@ -3,9 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Placeholder index site.</title>
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="functionalities.js"></script>
 </head>
 <body>
-    Project 1 is planned to emerge here.
+    <div id="app">
+        <h1>To-Do List</h1>
+        <input type="text" id="taskInput" placeholder="Add a new task">
+        <button onclick="addTask()">Add Task</button>
+        <table id="taskTable">
+            <thead>
+                <tr>
+                    <th>Task</th>
+                    <th>Done</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody id="taskList">
+                
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

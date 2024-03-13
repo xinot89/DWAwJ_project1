@@ -1,0 +1,12 @@
+table {
+    border: solid;
+    border-collapse: collapse;
+}
+th, td, tr {
+    border: solid;
+    border-collapse: collapse;
+}
+.donetasks {
+    color: tomato;
+    border-color: black;
+}
