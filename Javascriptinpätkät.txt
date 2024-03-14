@@ -1,0 +1,48 @@
+seuraavalla saa lisättyä menestyksekkäästi rivin 3:lla solulla taskListiin:
+{
+    const taskInput = document.getElementById('taskInput');
+    const taskTable = document.getElementById('taskTable');
+    const taskList = document.getElementById('taskList');
+  const taskRow = document.createElement('tr');
+  //Colomn 1:
+      const taskColumn = document.createElement('td');
+    taskColumn.textContent = "content1";
+    taskRow.appendChild(taskColumn);
+  //Column 2:
+        const taskColummn = document.createElement('td');
+    taskColummn.textContent = "content2";
+    taskRow.appendChild(taskColummn);
+  //Column 3:
+          const taskColummmn = document.createElement('td');
+    taskColummmn.textContent = "content3";
+    taskRow.appendChild(taskColummmn);
+  //tungetaan rivi taulukkoon:
+      // Add task row to the table
+    taskList.appendChild(taskRow);
+
+    //taskList.innerHTML ="<tr><td>Hentaiiiiaaaa</td></tr>"
+}
+
+Alkuperäinen loadTasks:
+function loadTasks() {
+    const taskTable = document.getElementById('taskTable');
+    // If taskList does not exist, create it
+    const taskList = document.getElementById('taskList');
+
+    // Load tasks from localStorage
+    /*14.3.2024 9:30 version, checks if localstorage has key "tasks" and loads it only if it is present:*/
+    if ("tasks" in localStorage){
+        taskTable.innerHTML = localStorage.getItem('tasks') || '';
+    }    
+    // query all objects, which have class "donetasks"
+    const donetasksElements = taskTable.querySelectorAll('.donetasks');
+    //console.log("loadTasks DonetasksElements: "+donetasksElements);
+    donetasksElements.forEach((donetasksElement, index) => {
+        //console.log("loadTasks DonetasksElements foreach run: "+index);
+        const checkbox = donetasksElement.querySelector('input[type="checkbox"]');
+        if (checkbox) {
+            //checkbox.checked = checkboxStates[index];
+            checkbox.checked = true;
+        }
+    });
+}
