@@ -6,18 +6,16 @@ function addTask() {
     const taskInput = document.getElementById('taskInput');
     const taskTable = document.getElementById('taskTable');
     const taskList = document.getElementById('taskList');
-
     if (taskInput.value.trim() === '') {
         alert('Please enter a task!');
         return;
     }
-    // Create task row
+    // Create task row & column:
     const taskRow = document.createElement('tr');
-    // Task column
     const taskColumn = document.createElement('td');
     taskColumn.textContent = taskInput.value;
     taskRow.appendChild(taskColumn);
-    // Done column
+    // Make Done -column
     const doneColumn = document.createElement('td');
     const doneButton = document.createElement('input');
     doneButton.type = "checkbox";
@@ -25,7 +23,7 @@ function addTask() {
     doneButton.addEventListener('change', markTaskAsDone);
     doneColumn.appendChild(doneButton);
     taskRow.appendChild(doneColumn);
-    // Remove column
+    // Make remove -column
     const removeColumn = document.createElement('td');
     const removeButton = document.createElement('button');
     removeButton.textContent = 'Remove';
@@ -55,7 +53,43 @@ function removeTask() {
     this.parentNode.parentNode.remove();
     saveTasks();
 }
-/* Orkkis saveTasks, ditched as it won't save checkboxes state.
+function removeHardCodedTask(theone) {
+    theone.parentNode.parentNode.remove();
+    saveTasks();
+}
+function purgeList() {
+    const taskList = document.getElementById('taskList');
+    if (confirm("Are you sure to remove all contents from task list?")) {
+        taskList.innerHTML="";
+        if ("tasks" in localStorage){
+            localStorage.removeItem("tasks");
+        }
+    }
+}
+//started making removeDone 16.3.2024 10:30.
+//feature done 16.3.2024 11:15.
+function removeDone() {
+    if (confirm("Are you sure to remove all done tasks?")) {
+        const taskList = document.getElementById('taskList');
+        const taskRows = taskList.querySelectorAll('tr');
+        //Develop ability to iterate through checkboxes.
+        taskRows.forEach(taskRow => {
+            //const task = {};
+            //task.name = taskRow.querySelector('td').textContent;
+            // Save the state of the checkbox
+            const checkbox = taskRow.querySelector('input[type="checkbox"]');
+            //console.log("removeDone checkboxes: " + checkbox.checked);
+            if (checkbox.checked) {
+                taskRow.remove();
+            }
+            //task.done = checkbox.checked;
+            //tasks.push(task);
+        });
+        saveTasks();
+    }
+    
+}
+/* Original saveTasks, ditched as it won't save checkboxe's states.
 Also storing whole html for to-do list on localstorage seems bit unnecessary:
 function saveTasks() {
     const taskTable = document.getElementById('taskTable');
@@ -91,7 +125,7 @@ function loadTasks() {
                     taskColumn.classList.add('donetasks');
                 }
                 taskColumn.textContent = task.name;
-                console.log("Put task to td with following name: " + task.name);
+                //console.log("Put task to td with following name: " + task.name);
                 taskRow.appendChild(taskColumn);
                 //Checkbox:
                 const doneColumn = document.createElement('td');
