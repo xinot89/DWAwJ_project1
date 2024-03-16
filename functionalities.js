@@ -35,6 +35,8 @@ function addTask() {
     saveTasks();
     taskInput.value = '';
 }
+//markTaskAsDone adds/removes class from task name which effects styling.
+//Could probably be done so, that it only checks edited entries instead of all.
 function markTaskAsDone() {
     var cells = this.parentNode.parentNode.children;
     //For loop which sets donetasks class into each cell.
