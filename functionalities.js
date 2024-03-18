@@ -1,7 +1,10 @@
-/*Hajotetaan sivu itse, kunnes saan koodin toimimaan, siksi kommentoitu pois.*/
+//Triggers task loading from localstorage when page is loaded:
 document.addEventListener('DOMContentLoaded', () => {
     loadTasks();
 });
+/*Event listener for file input box, doesn't work yet.
+document.getElementById('fileInput').addEventListener('change', handleFileSelect, false);
+*/
 function addTask() {
     const taskInput = document.getElementById('taskInput');
     const taskTable = document.getElementById('taskTable');
@@ -89,9 +92,8 @@ function removeDone() {
         });
         saveTasks();
     }
-    
 }
-/* Original saveTasks, ditched as it won't save checkboxe's states.
+/* Original saveTasks, ditched as it won't save checkboxes' states.
 Also storing whole html for to-do list on localstorage seems bit unnecessary:
 function saveTasks() {
     const taskTable = document.getElementById('taskTable');
@@ -155,4 +157,76 @@ function loadTasks() {
     } else {
         console.log("No tasks in localStorage")
     }
+}
+function saveListToFile() {
+    //From function loadtasks:
+    if ("tasks" in localStorage){
+        //console.log("Tasks in localstorage omg.")
+        const tasks = JSON.parse(localStorage.getItem('tasks'));
+        const tasksString = JSON.stringify(tasks, null, 2); // Indent with 2 spaces for readability
+        // Create a blob with the JSON content
+        const blob = new Blob([tasksString], { type: 'application/json' });
+
+        // Create a temporary link element to trigger the download
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'savedtasks.json';
+        link.click();
+
+        URL.revokeObjectURL(link.href);
+    } else {
+        alert("No tasks in localstorage(/table)!")
+    }
+}
+/*functions for file loading: Currently replaced by simpler one.
+function loadListFromFile(file) {
+    const reader = new FileReader();
+
+    reader.onload = function(event) {
+        const contents = event.target.result;
+        try {
+            const tasks = JSON.parse(contents);
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+            alert('Tasks loaded successfully!');
+        } catch (error) {
+            console.error('Error parsing JSON:', error);
+            alert('Error loading tasks. Please check the file format.');
+        }
+    };
+
+    reader.readAsText(file);
+}
+*/
+
+/*For event listener (not functional yet)
+function handleFileSelect(event) {
+    const file = event.target.files[0];
+    loadListFromFile(file);
+}*/
+
+function loadListFromFile() {
+    const fileInput = document.getElementById("fileInput");
+    if (!fileInput) {
+        console.error("File input element not found.");
+        return;
+    }
+    const file = fileInput.files[0];
+    if (!file) {
+        console.error("No file selected.");
+        return;
+    }
+    const reader = new FileReader();
+    reader.onload = function(event) {
+        const contents = event.target.result;
+        try {
+            const tasks = JSON.parse(contents);
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+            alert('Tasks loaded successfully!');
+        } catch (error) {
+            console.error('Error parsing JSON:', error);
+            alert('Error loading tasks. Please check the file format.');
+        }
+    };
+
+    reader.readAsText(file);
 }
