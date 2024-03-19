@@ -1,6 +1,9 @@
 body {
     text-align: center;
 }
+a {
+    font-size: 200%;
+}
 table {
     margin: 0 auto;
     margin-top: 1em;
