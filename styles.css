@@ -1,12 +1,34 @@
+body {
+    text-align: center;
+}
 table {
+    margin: 0 auto;
+    margin-top: 1em;
     border: solid;
     border-collapse: collapse;
+    /*Allaoleva keskittää myös checkboxit:*/
+    text-align: center;
+    border-color: #ccc;
 }
 th, td, tr {
     border: solid;
     border-collapse: collapse;
+    border-color: #ccc;
 }
 .donetasks {
     color: tomato;
-    border-color: black;
+    border-color: #ccc;
+    text-decoration: line-through;
+    padding-left: 1em;
+    padding-right: 1em;
+    min-width: 100px;
+}
+.todotasks {
+    padding-left: 1em;
+    padding-right: 1em;
+    min-width: 100px;
+}
+.functionbuttondiv {
+    border-top: 1px, solid;
+    border: none;
 }

@@ -8,47 +8,51 @@
     <script src="functionalities.js"></script>
 </head>
 <body>
-    <div>
-        <h1>To-Do List</h1>
-        <input type="text" id="taskInput" placeholder="Add a new task">
-        <button onclick="addTask()">Add Task</button>
-        <table id="taskTable">
-            <thead>
-                <tr>
-                    <th>Task</th>
-                    <th>Done</th>
-                    <th>Remove</th>
-                </tr>
-            </thead>
-            <tbody id="taskList">
-                <!--
-                <tr>
-                    <td>Hardcoded1</td>
-                    <td><input type="checkbox" checked="true"></td>
-                    <td><button onclick="removeHardCodedTask(this)">Hardcoded remove</button></td>
-                </tr>
-                <tr>
-                    <td>Hardcoded2</td>
-                    <td><input type="checkbox"></td>
-                    <td><button onclick="removeHardCodedTask(this)">Hardcoded remove</button></td>
-                </tr>
-                <tr>
-                    <td>Hardcoded3</td>
-                    <td><input type="checkbox" checked="true"></td>
-                    <td><button onclick="removeHardCodedTask(this)">Hardcoded remove</button></td>
-                </tr>
-                <tr>
-                    <td>Hardcoded4</td>
-                    <td><input type="checkbox"></td>
-                    <td><button onclick="removeHardCodedTask(this)">Hardcoded remove</button></td>
-                </tr>
-                -->
-            </tbody>
-        </table>
-        <button onclick="removeDone()">Remove done tasks.</button>
-        <button onclick="purgeList()">Empty whole list.</button>
-        <button onclick="saveListToFile()">Save list to file.</button>
-        <br>Load saved task list:<br><input type="file" id="fileInput"><button onclick="loadListFromFile()">Load file</button>
+    <h1>To-Do List</h1>
+    <input type="text" id="taskInput" placeholder="Add a new task">
+    <button onclick="addTask()">Add Task</button>
+    <table id="taskTable">
+        <thead>
+            <tr>
+                <th>Task</th>
+                <th>Done</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody id="taskList">
+            <!--
+            <tr>
+                <td>Hardcoded1</td>
+                <td><input type="checkbox" checked="true"></td>
+                <td><button onclick="removeHardCodedTask(this)">Hardcoded remove</button></td>
+            </tr>
+            <tr>
+                <td>Hardcoded2</td>
+                <td><input type="checkbox"></td>
+                <td><button onclick="removeHardCodedTask(this)">Hardcoded remove</button></td>
+            </tr>
+            <tr>
+                <td>Hardcoded3</td>
+                <td><input type="checkbox" checked="true"></td>
+                <td><button onclick="removeHardCodedTask(this)">Hardcoded remove</button></td>
+            </tr>
+            <tr>
+                <td>Hardcoded4</td>
+                <td><input type="checkbox"></td>
+                <td><button onclick="removeHardCodedTask(this)">Hardcoded remove</button></td>
+            </tr>
+            -->
+        </tbody>
+    </table>
+    <div class="functionbuttondiv">
+        <button onclick="removeDone()">Remove done tasks</button>
+        <button onclick="purgeList()">Empty whole list</button>
+        <br><button onclick="saveListToFile()">Save list to file</button>
+    </div>
+    <div class="functionbuttondiv">
+        Load saved task list:<br>
+        <input type="file" id="fileInput">
+        <button onclick="loadListFromFile()">Load file</button>
     </div>
 </body>
 </html>
