@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.getElementById('fileInput').addEventListener('change', handleFileSelect, false);
 */
 function addTask() {
+    //taskInput = task input text-box
     const taskInput = document.getElementById('taskInput');
     const taskTable = document.getElementById('taskTable');
     const taskList = document.getElementById('taskList');
@@ -48,7 +49,9 @@ function addTask() {
 //Could probably be done so, that it only checks edited entries instead of all.
 function markTaskAsDone() {
     var cells = this.parentNode.parentNode.children;
-    //For loop which sets donetasks class into each cell.
+    /*Was originally for loop which set donetasks class into each cell.
+    On styling phase, when adding own class for non-done tasks i noticed that for -loop was actually 
+    unnecessary as needed position was allready selected on variable cells when function is called.*/
     if (this.checked) {
         cells[0].classList.add('donetasks');
         cells[0].classList.remove('todotasks');
@@ -134,7 +137,7 @@ function saveTasks() {
     // Save tasks to localStorage as JSON
     localStorage.setItem('tasks', JSON.stringify(tasks));
 }
-/*
+/* loadTask backup of original version which includes redundancies:
 function loadTasks() {
     if ("tasks" in localStorage){
         const taskList = document.getElementById('taskList');
@@ -223,7 +226,7 @@ function saveListToFile() {
     if ("tasks" in localStorage){
         //console.log("Tasks in localstorage omg.")
         const tasks = JSON.parse(localStorage.getItem('tasks'));
-        const tasksString = JSON.stringify(tasks, null, 2); // Indent with 2 spaces for readability
+        const tasksString = JSON.stringify(tasks, null, 2);
         // Create a blob with the JSON content
         const blob = new Blob([tasksString], { type: 'application/json' });
         // Create a temporary link element to trigger the download

@@ -9,7 +9,7 @@ table {
     margin-top: 1em;
     border: solid;
     border-collapse: collapse;
-    /*Allaoleva keskittää myös checkboxit:*/
+    /*Rule below also applies to checkboxes:*/
     text-align: center;
     border-color: #ccc;
 }
