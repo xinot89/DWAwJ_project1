@@ -13,6 +13,9 @@ function addTask() {
     const taskList = document.getElementById('taskList');
     if (taskInput.value.trim() === '') {
         alert('Please enter a task!');
+        const inputbox = document.getElementById("taskInput");
+        inputbox.style.background ="rgba(255, 0, 0, 0.3)";
+        inputbox.placeholder = "Enter your new task here";
         return;
     }
     // Create task row & column:
@@ -303,4 +306,13 @@ function loadListFromFile() {
     }
     //Refresh page:
     location.reload();
+}
+//Whitening function for input box after error:
+function exc1_towhite(which) {
+    const inputbox = document.getElementById("taskInput");
+    if (which=="inputbox") {
+        inputbox.style.background ="rgb(255, 255, 255)";
+    } else {
+        console.log("exc1_towhite didn't do anything.")
+    }
 }
