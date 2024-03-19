@@ -19,6 +19,7 @@ function addTask() {
     const taskRow = document.createElement('tr');
     const taskColumn = document.createElement('td');
     taskColumn.textContent = taskInput.value;
+    taskColumn.classList.add("todotasks");
     taskRow.appendChild(taskColumn);
     // Making of "Done" -column.
     const doneColumn = document.createElement('td');
@@ -46,13 +47,17 @@ function markTaskAsDone() {
     var cells = this.parentNode.parentNode.children;
     //For loop which sets donetasks class into each cell.
     if (this.checked) {
-        for (var i = 0; i <cells.length; i++) {
-            cells[i].classList.add('donetasks');
-        }
+        cells[0].classList.add('donetasks');
+        cells[0].classList.remove('todotasks');
+        /*for (var i = 0; i <cells.length; i++) {
+
+        }*/
     } else {
-        for (var i = 0; i <cells.length; i++) {
-            cells[i].classList.remove('donetasks');
-        }
+        cells[0].classList.remove('donetasks');
+        cells[0].classList.add('todotasks');
+        /*for (var i = 0; i <cells.length; i++) {
+
+        }*/
     }
     saveTasks();
 }
@@ -179,6 +184,8 @@ function loadTasks() {
             const taskColumn = document.createElement('td');
             if (task.done) {
                 taskColumn.classList.add('donetasks');
+            } else {
+                taskColumn.classList.add('todotasks');
             }
             taskColumn.textContent = task.name;
             //console.log("Put task to td with following name: " + task.name);
