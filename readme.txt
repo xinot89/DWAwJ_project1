@@ -1,2 +1,3 @@
+Single work by Toni Pohjanheimo.
 This project is for learning website manipulation with javascript.
 In methods, there are probably plenty of redundancy, like for example separate, but similar functions removeHardCodedTask(theone) and removeTask(). All, enabled things are basically working and i aimed to have comments for future's reference to explain each word and and unnecessary -looking characters in code.
